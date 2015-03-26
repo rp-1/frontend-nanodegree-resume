@@ -8,7 +8,7 @@ var bio = {
         "gitHub": "http://www.github.com/rp-1",
         "location": "Nashville, TN"
     },
-    "welcomeMessage": "Hi, I'm areative director, writer, strategist, developer and overall " +
+    "welcomeMessage": "Hi, I'm a creative director, writer, strategist, developer and overall " +
     "brand missionary who touches all stages of the marketing process to engineer creative " +
     "solutions that help businesses solve problems and reach goals.",    
     "skills": [
@@ -23,14 +23,11 @@ var bio = {
     "display": function() {
         var formattedName = HTMLheaderName.replace("%data%", this.name);
         var formattedRole = HTMLheaderRole.replace("%data%", this.role);
-
         var formattedMobile = HTMLmobile.replace("%data%", this.contacts.mobile);
         var formattedEmail = HTMLemail.replace("%data%", this.contacts.email);
         var formattedTwitter = HTMLtwitter.replace("%data%", this.contacts.twitter);
         var formattedGitHub = HTMLgithub.replace("%data%", this.contacts.gitHub);
-
         var formattedLoc = HTMLlocation.replace("%data%", this.contacts.location);
-
         var formattedBiopic = HTMLbioPic.replace("%data%", this.biopic);
         var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", this.welcomeMessage);
 
@@ -49,7 +46,6 @@ var bio = {
             formattedLoc;
         $('#topContacts').append(formattedContacts);
         $('#footerContacts').append(formattedContacts);
-        
 
         $("#header").append(formattedBiopic);
         $("#header").append(formattedWelcomeMessage);
@@ -121,16 +117,13 @@ var projects = {
         {
             "title": "Bullboard App",
             "dates": "2011-2012",
-            "description": "Programmed (Objective-C) and designed meme-style app. Thousands of downloads in App Store.",
+            "description": "Programmed (Objective-C) and designed meme-style app that let you " +
+            "insert your own photos into dozens of predesigned billboards. Thousands of downloads " +
+            "in App Store.",
             "images": [
-                {
-                    "thumb": "http://placehold.it/200x100",
-                    "largerImage": "http://placehold.it/600x300"
-                },
-                {
-                     "thumb": "http://placehold.it/200x100",
-                    "largerImage": "http://placehold.it/600x300"
-                }
+                "images/bullboard_default.jpg",
+                "images/bullboard_pregnant.jpg",
+                "images/bullboard_meth.jpg"
             ]
         },
         
@@ -141,14 +134,9 @@ var projects = {
             "balloons, rising and falling with their stock price, in real-time. Currently " +
             "available for iPad in the App Store.",
             "images": [
-                {
-                    "thumb": "http://placehold.it/200x100",
-                    "largerImage": "http://placehold.it/600x300"
-                },
-                {
-                     "thumb": "http://placehold.it/200x100",
-                    "largerImage": "http://placehold.it/600x300"
-                }
+                "images/stockscape_cap1.jpg",
+                "images/stockscape_cap2.jpg",
+                "images/stockscape_cap3.jpg"
             ]
         }
     ],
@@ -167,8 +155,7 @@ var projects = {
 
 
             for(var j = 0; j < this.projects[i].images.length; j++) {
-                var formattedImage = HTMLprojectImage.replace("%data%", this.projects[i].images[j].thumb);
-                formattedImage = formattedImage.replace("%link%", this.projects[i].images[j].largerImage);
+                var formattedImage = HTMLprojectImage.replace("%data%", this.projects[i].images[j]);
                 $(".project-entry:last").append(formattedImage);
             }
         }
@@ -242,7 +229,6 @@ var education = {
 
             $("#education").append(HTMLschoolStart);
             $(".education-entry:last").append(formattedTitle + formattedSchool);
-            console.log(formattedTitle + formattedSchool);
             $(".education-entry:last").append(formattedDates);
             $(".education-entry:last").append(formattedUrl);
         }
@@ -259,6 +245,12 @@ education.display();
    
 $("#main").append(internationalizeButton);
 
+$("#mapDiv").append(googleMap);
+
+
+/*
+Takes name string (first last) as input. Returns international format, e.g First LAST
+*/
 function inName(name) {
     var first_last = name.trim().split(" ");
     var first = first_last[0].toLowerCase();
@@ -267,5 +259,3 @@ function inName(name) {
     
     return first + " " + last;
 }
-
-$("#mapDiv").append(googleMap);

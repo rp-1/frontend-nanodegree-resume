@@ -1,17 +1,7 @@
 /*
-
-This file contains all of the code running in the background that makes resumeBuilder.js possible. We call these helper functions because they support your code in this course.
-
-Don't worry, you'll learn what's going on in this file throughout the course. You won't need to make any changes to it until you start experimenting with inserting a Google Map in Problem Set 3.
-
-Cameron Pittman
+This file contains all of the code running in the background that makes resumeBuilder.js possible.
 */
 
-
-/*
-These are HTML strings. As part of the course, you'll be using JavaScript functions
-replace the %data% placeholder text you see in them.
-*/
 var HTMLheaderName = '<h1 id="name">%data%</h1>';
 var HTMLheaderRole = '<span>%data%</span><hr/>';
 
@@ -26,13 +16,8 @@ var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</sp
 var HTMLbioPic = '<img src="%data%" class="biopic">';
 var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
 
-//var HTMLskillsStart = '<h3 id="skillsH3">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
-//var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
-
-/* Modified original skill variables to make it so list items went within ul opening and closing tags */
-var HTMLskillsStart = '<h3 id="skillsH3">Skills at a Glance:</h3>';
-var HTMLskillList = '<ul id="skills">%data%</ul>';
-var HTMLskills = '<li><span class="white-text">%data%</span></li>';
+var HTMLskillsStart = '<h3 id="skillsH3">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
+var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
 
 var HTMLworkStart = '<div class="work-entry"></div>';
 var HTMLworkEmployer = '<a href="#">%data%';
@@ -96,7 +81,7 @@ $(document).click(function(loc) {
 
 
 /*
-This is the fun part. Here's where we generate the custom Google Map for the website.
+Here's where we generate the custom Google Map for the website.
 See the documentation below for more details.
 https://developers.google.com/maps/documentation/javascript/reference
 */
@@ -104,7 +89,7 @@ var map;    // declares a global map variable
 
 
 /*
-Start here! initializeMap() is called when page is loaded.
+initializeMap() is called when page is loaded.
 */
 function initializeMap() {
 
@@ -166,16 +151,23 @@ function initializeMap() {
       title: name
     });
 
+    // Added this variable to hold html for infoWindow popup
+    var infoWindowHtml = 
+    '<div style="border:5px solid #f5a623; padding:10px; background-color:#484848;">' +
+    '<h3 style="color:#f5a623;">' + name + '</h3>' +
+    '<img src="http://placehold.it/200x200/">';
+      
     // infoWindows are the little helper windows that open when you click
     // or hover over a pin on a map. They usually contain more information
     // about a location.
     var infoWindow = new google.maps.InfoWindow({
-      content: name
+      content: infoWindowHtml
     });
 
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
-      // your code goes here!
+
+        infoWindow.open(map, marker);
     });
 
     // this is where the pin actually gets added to the map.
