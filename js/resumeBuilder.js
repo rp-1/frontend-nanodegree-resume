@@ -50,15 +50,21 @@ var bio = {
         $("#header").append(formattedWelcomeMessage);
 
         if(this.skills.length !== 0) {
+            var formattedSkillString = "";
             $("#header").append(HTMLskillsStart);
             for(var skill in this.skills) {
-                var formattedSkill = HTMLskills.replace("%data%", this.skills[skill]);
-                $("#header").append(formattedSkill);
+                formattedSkillString += HTMLskills.replace("%data%", this.skills[skill]);
             }
+            var formattedList = HTMLskillList.replace("%data%", formattedSkillString);
+            $("#header").append(formattedList);
         }
     }
         
 };
+
+var HTMLskillsStart = '<h3 id="skillsH3">Skills at a Glance:</h3>';
+var HTMLskillList = '<ul id="skills">%data%</ul>';
+var HTMLskills = '<li><span class="white-text">%data%</span></li>';
 
 var work = {
     "jobs": [
