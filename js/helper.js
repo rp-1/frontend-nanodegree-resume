@@ -137,6 +137,19 @@ function initializeMap() {
 
     return locations;
   }
+    
+    /*
+    TODO: find a more elegant way to attach custom image to infoWindow
+    This works but I'm sure there is a better way, but best I can do right now
+    */
+    
+    
+    var mapImg = {
+        "Nashville": "images/nashville.jpg",
+        "Birmingham": "images/birmingham.jpg",
+        "Athens": "images/athens.jpg",
+        "Atlanta": "images/atlanta.jpg"
+    }
 
   /*
   createMapMarker(placeData) reads Google Places search results to create map pins.
@@ -151,24 +164,23 @@ function initializeMap() {
     var name = placeData.formatted_address;   // name of the place from the place service
     var bounds = window.mapBounds;            // current boundaries of the map window
 
+     var city = name.slice(0, name.indexOf(","));
+      
     // marker is an object with additional data about the pin for a single location
     var marker = new google.maps.Marker({
       map: map,
       position: placeData.geometry.location,
-      title: name
+      title: name,
+        img: mapImg[city]
     });
 
-    // Added this variable to hold html for infoWindow popup
-    var infoWindowHtml = 
-    '<div style="border:5px solid #f5a623; padding:10px; background-color:#484848;">' +
-    '<h3 style="color:#f5a623;">' + name + '</h3>' +
-    '<img src="http://placehold.it/200x200/">';
       
     // infoWindows are the little helper windows that open when you click
     // or hover over a pin on a map. They usually contain more information
     // about a location.
     var infoWindow = new google.maps.InfoWindow({
-      content: infoWindowHtml
+      content: '<div style="border:5px solid #f5a623; padding:10px; background-color:#484848;">' +
+                '<img src="' + marker.img + '">'
     });
 
     // hmmmm, I wonder what this is about...

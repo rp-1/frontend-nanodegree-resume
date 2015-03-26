@@ -30,7 +30,6 @@ var bio = {
         var formattedBiopic = HTMLbioPic.replace("%data%", this.biopic);
         var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", this.welcomeMessage);
 
-        /* skills */
         var skills_string = this.skills.join(" ");
         var skills = HTMLskills.replace("%data%", skills_string);
 
@@ -215,7 +214,6 @@ var education = {
 
     display: function() {
 
-        /* -- TRADITIONAL SCHOOLS -- */
         for(var school in this.schools) {
             var formattedName = HTMLschoolName.replace("%data%", this.schools[school].name);
             var formattedDegree = HTMLschoolDegree.replace("%data%", this.schools[school].degree);
@@ -232,7 +230,6 @@ var education = {
 
             $("#education").append(HTMLonlineClasses);
 
-        /* -- ONLINE CLASSES -- */
         for(var course in this.onlineCourses) {
             var formattedTitle = HTMLonlineTitle.replace("%data%", this.onlineCourses[course].title);
             var formattedSchool = HTMLonlineSchool.replace("%data%", this.onlineCourses[course].school);
@@ -247,7 +244,9 @@ var education = {
     }
 };
 
-/* -- Add formatted html to page -- */
+/*
+Add formatted html to page
+*/
 bio.display();
 work.display();
 projects.display();
