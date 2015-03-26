@@ -15,12 +15,11 @@ var bio = {
         "Creative Direction",
         "Concept Development",
         "Web development",
-        "Programming",
         "Copywriting"
     ],
     
     "biopic": "images/biopic.jpg",
-    "display": function() {
+    display: function() {
         var formattedName = HTMLheaderName.replace("%data%", this.name);
         var formattedRole = HTMLheaderRole.replace("%data%", this.role);
         var formattedMobile = HTMLmobile.replace("%data%", this.contacts.mobile);
@@ -52,9 +51,8 @@ var bio = {
 
         if(this.skills.length !== 0) {
             $("#header").append(HTMLskillsStart);
-            
-            for(var i = 0; i < this.skills.length; i++) {
-                var formattedSkill = HTMLskills.replace("%data%", this.skills[i]);
+            for(var skill in this.skills) {
+                var formattedSkill = HTMLskills.replace("%data%", this.skills[skill]);
                 $("#header").append(formattedSkill);
             }
         }
@@ -69,7 +67,8 @@ var work = {
             "title": "President",
             "location": "Nashville, TN",
             "dates": "2014 - present",
-            "description": "Freelance integrated creative director available for concept and " +                    "development projects requiring big ideas and a smart, integrated approach."
+            "description": "Freelance integrated creative director available for concept and " +
+            "development projects requiring big ideas and a smart, integrated approach."
         },
 
         {
@@ -77,7 +76,10 @@ var work = {
             "title": "Executive Creative Director",
             "location": "Nashville, TN",
             "dates": "2013 - 2014",
-            "description": "Led creative department for mid-size, full-service advertising agency. " +              "Played a critical role in increasing agency revenue, generating insights and ideas " +                 "that  helped score multiple new business wins, two of which were major account " +                     "acquisitions for the agency.In less than 6 months with the organization was " + 
+            "description": "Led creative department for mid-size, full-service advertising agency. " +
+            "Played a critical role in increasing agency revenue, generating insights and ideas " +
+            "that  helped score multiple new business wins, two of which were major account " +
+            "acquisitions for the agency.In less than 6 months with the organization was " +
             "promoted to Senior Vice President, Director of Creative Strategy."
         },
         
@@ -87,21 +89,25 @@ var work = {
             "location": "Birmingham, AL",
             "dates": "2001 - 2013",
             "description": "Established creative vision for all clients. Brought focus and " +
-            "consistency to brand messaging across all platforms. Brought both strategic and " +                    "creative vision to large-scale, multi-million dollar projects with many moving " +                     "parts.Managed diverse array of creative partners and vendors.Handled countless " +                     "product launches and major communications initiatives for regional and " +
+            "consistency to brand messaging across all platforms. Brought both strategic and " +
+            "creative vision to large-scale, multi-million dollar projects with many moving " +
+            "parts.Managed diverse array of creative partners and vendors.Handled countless " +
+            "product launches and major communications initiatives for regional and " +
             "international consumer goods accounts. Created custom branded content and digital " +
-            "assets, everything from apps to ebooks to rich media banners to full-blown " +                         "webisode/reality series."
+            "assets, everything from apps to ebooks to rich media banners to full-blown " +
+            "webisode/reality series."
         }
     
     ],
     
-    "display": function() {
+    display: function() {
     
-        for(var i = 0; i < this.jobs.length; i++) {
-            var formattedEmployer = HTMLworkEmployer.replace("%data%", this.jobs[i].employer);
-            var formattedTitle = HTMLworkTitle.replace("%data%", this.jobs[i].title);
-            var formattedDates = HTMLworkDates.replace("%data%", this.jobs[i].dates);
-            var formattedLoc = HTMLworkLocation.replace("%data%", this.jobs[i].location);
-            var formattedDescription = HTMLworkDescription.replace("%data%", this.jobs[i].description);
+        for(var job in this.jobs) {
+            var formattedEmployer = HTMLworkEmployer.replace("%data%", this.jobs[job].employer);
+            var formattedTitle = HTMLworkTitle.replace("%data%", this.jobs[job].title);
+            var formattedDates = HTMLworkDates.replace("%data%", this.jobs[job].dates);
+            var formattedLoc = HTMLworkLocation.replace("%data%", this.jobs[job].location);
+            var formattedDescription = HTMLworkDescription.replace("%data%", this.jobs[job].description);
 
             $("#workExperience").append(HTMLworkStart);
             $(".work-entry:last").append(formattedEmployer + formattedTitle);
@@ -141,12 +147,12 @@ var projects = {
         }
     ],
     
-    "display": function() {
+    display: function() {
     
-        for(var i = 0; i < this.projects.length; i++) {
-            var formattedTitle = HTMLprojectTitle.replace("%data%", this.projects[i].title);
-            var formattedDates= HTMLprojectDates.replace("%data%", this.projects[i].dates);                         
-            var formattedDescription = HTMLprojectDescription.replace("%data%", this.projects[i].description);
+        for(var project in this.projects) {
+            var formattedTitle = HTMLprojectTitle.replace("%data%", this.projects[project].title);
+            var formattedDates= HTMLprojectDates.replace("%data%", this.projects[project].dates);                         
+            var formattedDescription = HTMLprojectDescription.replace("%data%", this.projects[project].description);
 
             $("#projects").append(HTMLprojectStart);
             $(".project-entry:last").append(formattedTitle);
@@ -154,8 +160,8 @@ var projects = {
             $(".project-entry:last").append(formattedDescription); 
 
 
-            for(var j = 0; j < this.projects[i].images.length; j++) {
-                var formattedImage = HTMLprojectImage.replace("%data%", this.projects[i].images[j]);
+            for(var image in this.projects[project].images) {
+                var formattedImage = HTMLprojectImage.replace("%data%", this.projects[project].images[image]);
                 $(".project-entry:last").append(formattedImage);
             }
         }
@@ -201,15 +207,15 @@ var education = {
         }
     ],
 
-    "display": function() {
+    display: function() {
 
         /* -- TRADITIONAL SCHOOLS -- */
-        for(var i = 0; i < education.schools.length; i++) {
-            var formattedName = HTMLschoolName.replace("%data%", this.schools[i].name);
-            var formattedDegree = HTMLschoolDegree.replace("%data%", this.schools[i].degree);
-            var formattedDates = HTMLschoolDates.replace("%data%", this.schools[i].dates);
-            var formattedLoc = HTMLschoolLocation.replace("%data%", this.schools[i].location);
-            var formattedMajor = HTMLschoolMajor.replace("%data%", this.schools[i].majors);
+        for(var school in this.schools) {
+            var formattedName = HTMLschoolName.replace("%data%", this.schools[school].name);
+            var formattedDegree = HTMLschoolDegree.replace("%data%", this.schools[school].degree);
+            var formattedDates = HTMLschoolDates.replace("%data%", this.schools[school].dates);
+            var formattedLoc = HTMLschoolLocation.replace("%data%", this.schools[school].location);
+            var formattedMajor = HTMLschoolMajor.replace("%data%", this.schools[school].majors);
 
             $("#education").append(HTMLschoolStart);
             $(".education-entry:last").append(formattedName + formattedDegree);
@@ -221,11 +227,11 @@ var education = {
             $("#education").append(HTMLonlineClasses);
 
         /* -- ONLINE CLASSES -- */
-        for(var i = 0; i < education.onlineCourses.length; i++) {
-            var formattedTitle = HTMLonlineTitle.replace("%data%", this.onlineCourses[i].title);
-            var formattedSchool = HTMLonlineSchool.replace("%data%", this.onlineCourses[i].school);
-            var formattedDates = HTMLonlineDates.replace("%data%", this.onlineCourses[i].date);
-            var formattedUrl = HTMLonlineURL.replace("%data%", this.onlineCourses[i].url);
+        for(var course in this.onlineCourses) {
+            var formattedTitle = HTMLonlineTitle.replace("%data%", this.onlineCourses[course].title);
+            var formattedSchool = HTMLonlineSchool.replace("%data%", this.onlineCourses[course].school);
+            var formattedDates = HTMLonlineDates.replace("%data%", this.onlineCourses[course].date);
+            var formattedUrl = HTMLonlineURL.replace("%data%", this.onlineCourses[course].url);
 
             $("#education").append(HTMLschoolStart);
             $(".education-entry:last").append(formattedTitle + formattedSchool);
@@ -235,27 +241,10 @@ var education = {
     }
 };
 
-/*
-Add formatted html to page
-*/
+/* -- Add formatted html to page -- */
 bio.display();
 work.display();
 projects.display();
 education.display();
-   
-$("#main").append(internationalizeButton);
 
 $("#mapDiv").append(googleMap);
-
-
-/*
-Takes name string (first last) as input. Returns international format, e.g First LAST
-*/
-function inName(name) {
-    var first_last = name.trim().split(" ");
-    var first = first_last[0].toLowerCase();
-    first = first.slice(0,1).toUpperCase() + first.slice(1);
-    var last = first_last[1].toUpperCase();
-    
-    return first + " " + last;
-}
