@@ -1,11 +1,17 @@
+
 * {
   padding:0;
   margin:0;
   font-family: 'Roboto', sans-serif;
+
 }
 
 .clearfix {
   overflow: auto;
+}
+
+.role {
+    color: #696969;
 }
 
 .education-entry, .work-entry, .project-entry {
@@ -23,7 +29,7 @@
 
 h1 {
   font-size: 40px;
-  color: #F5A623;
+  color: #C4CDC1;
   line-height: 48px;
   display: inline;
 }
@@ -31,7 +37,7 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 24px;
-  color: #999999;
+  color: #28363D;
   line-height: 29px;
   padding: 10px;
 }
@@ -39,7 +45,7 @@ h2 {
 h3 {
   font-style: italic;
   font-size: 20px;
-  color: #000000;
+  color: #99AEAD;
   line-height: 22px;
 }
 
@@ -76,12 +82,12 @@ h2, h3, h4, h5 {
 
 p {
   font-size: 14px;
-  color: #333333;
+  color: #696969;
   line-height: 21px;
 }
 
 a {
-  color: #1199C3;
+  color: #2F575D;
   text-decoration: none;
   margin-top: 10px;
   display: block;
@@ -95,16 +101,16 @@ a {
 }
 
 #skillsH3 {
-  color: #F5AE23;
+  color: #C4CDC1;
   display: none;
 }
 
-.orange {
-  background-color: #F5AE23;
+.dark-green {
+  background-color: #28363D;
 }
 
-.orange-text {
-  color: #F5AE23;
+.green-text {
+  color: #C4CDC1;
 }
 
 .white-text {
@@ -124,7 +130,7 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #28363D;
 }
 
 .flex-box {
@@ -177,6 +183,15 @@ span {
 
 #letsConnect {
   text-align: center;
+    background-color: #C4CDC1;
+}
+
+.connect-text {
+    color: #28363D;
+}
+
+#footerContacts {
+    background-color: #28363D;
 }
 
 @media only screen and (max-width: 1024px) {

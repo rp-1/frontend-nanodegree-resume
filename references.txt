@@ -1,6 +1,7 @@
 References used to build Project 2: frontend-nanodegree-resume
 
-Udacity Javasscript Basics Course - http://udacity.com
+Udacity Javasscript Basics Course
+http://udacity.com
 Used this course to learn how to build basic structure of project
 
 Udacity Intro to jQuery - http://udacity.com
@@ -25,3 +26,7 @@ Validated html
 WC3 CSS Validation
 http://jigsaw.w3.org/css-validator/#validate_by_input
 Validated CSS
+
+Lavish
+http://www.lavishbootstrap.com
+Color palette ideas
