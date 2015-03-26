@@ -30,8 +30,8 @@ var bio = {
         var formattedBiopic = HTMLbioPic.replace("%data%", this.biopic);
         var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", this.welcomeMessage);
 
-        var skills_string = this.skills.join(" ");
-        var skills = HTMLskills.replace("%data%", skills_string);
+        var skillsString = this.skills.join(" ");
+        var skills = HTMLskills.replace("%data%", skillsString);
 
         $("#header").prepend(formattedRole);
         $("#header").prepend(formattedName);
